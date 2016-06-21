@@ -150,7 +150,6 @@ cr.plugins_.OpenMMO = function(runtime) {
             runtime.trigger(pluginProto.cnds.OnDisconnection, instance);
         });
         this.socket.on('movement', function(data) {
-            console.log(data);
             instance.movInfo.posX = data.posX;
             instance.movInfo.posY = data.posY;
             instance.movInfo.id = data.id;
@@ -208,12 +207,10 @@ cr.plugins_.OpenMMO = function(runtime) {
         };
     Exps.prototype.PeerPosX = function(ret) // 'ret' must always be the first parameter - always return the expression's result through it!
         {
-            console.log(this.movInfo.posX);
             ret.set_float(this.movInfo.posX);
         };
     Exps.prototype.PeerPosY = function(ret) // 'ret' must always be the first parameter - always return the expression's result through it!
         {
-            console.log(this.movInfo.posY);
             ret.set_float(this.movInfo.posY);
         };
     Exps.prototype.PeerId = function(ret) // 'ret' must always be the first parameter - always return the expression's result through it!

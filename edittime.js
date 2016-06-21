@@ -3,8 +3,8 @@
 	return {
 		"name":			"OpenMMO",				// as appears in 'insert object' dialog, can be changed as long as "id" stays the same
 		"id":			"OpenMMO",				// this is used to identify this plugin and is saved to the project; never change it
-		"version":		"1.0",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
-		"description":	"Create realtime online games",
+		"version":		"0.1",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
+		"description":	"Realtime communication with players",
 		"author":		"MadCorvo(olixis@gmail.com)",
 		"help url":		"https://github.com/olixis",
 		"category":		"Web",				// Prefer to re-use existing categories, but you can set anything here
@@ -58,8 +58,8 @@
 AddCondition(0, cf_trigger, "On connection", "Connection", "On connection", "Triggered when connected with the socket.io server", "OnConnect");
 AddCondition(1, cf_trigger, "On someones connection", "Connection", "On someones connection", "Triggered when someone else connects with the socket.io server", "OnConnection");
 AddCondition(2, cf_trigger, "On someones disconnection", "Connection", "On someones disconnection", "Triggered when someone else disconnects with the socket.io server", "OnDisconnection");
-AddCondition(3, cf_trigger, "Load assets after connecting", "Loading", "Load Event", "Loads assets after the connection", "LoadAll");
-AddCondition(4, cf_trigger, "Receives peer movement", "Connection", "On peer movement", "Receives coordinates of peer", "OnMovement");
+AddCondition(3, cf_trigger, "Load assets after connecting", "Loading", "Load Event", "Use this to load all peer initial information after the player login", "LoadAll");
+AddCondition(4, cf_trigger, "On peer movement", "Connection", "On peer movement", "Triggered when connected some peer moves", "OnMovement");
 
 ////////////////////////////////////////
 // Actions
@@ -95,11 +95,11 @@ AddAction(1, af_none, "Emit", "Emission", "Works like: socket.emit('{0}',{1}))",
 // example
 AddExpression(0, ef_return_number, "Online sockets", "Info", "SocketsOnline", "Return the number of online players");
 AddExpression(1, ef_return_string, "Last connected socket id", "Info", "LastConId", "Return the last socketId connected");
-AddExpression(2, ef_return_string, "Players Online", "Info", "PlayerList", "A list of online players id");
+AddExpression(2, ef_return_string, "Players Online", "Info", "PlayerList", "A list of online players that must be loaded on a dictionary at the On connection event");
 AddExpression(3, ef_return_string, "Last disconnected socket id", "Info", "LastDconId", "Return the last socketId disconnected");
-AddExpression(4, ef_return_number, "Last disconnected socket id", "Info", "PeerPosX", "Return the x peer position");
-AddExpression(5, ef_return_number, "Last disconnected socket id", "Info", "PeerPosY", "Return the y peer position");
-AddExpression(6, ef_return_string, "Last disconnected socket id", "Info", "PeerId", "Return the moving peer id");
+AddExpression(4, ef_return_number, "Last peer X coordinate", "Info", "PeerPosX", "Return the x peer position");
+AddExpression(5, ef_return_number, "Last peer Y coordinate", "Info", "PeerPosY", "Return the y peer position");
+AddExpression(6, ef_return_string, "Last peer socket id", "Info", "PeerId", "Return the moving peer id");
 
 
 ////////////////////////////////////////
